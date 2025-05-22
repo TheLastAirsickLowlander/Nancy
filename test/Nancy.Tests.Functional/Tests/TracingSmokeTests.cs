@@ -6,7 +6,7 @@ namespace Nancy.Tests.Functional.Tests
     using Nancy.Bootstrapper;
     using Nancy.Testing;
     using Nancy.Tests.Functional.Modules;
-
+    using Nancy.ViewEngines.Razor;
     using Xunit;
 
     public class TracingSmokeTests
@@ -18,7 +18,11 @@ namespace Nancy.Tests.Functional.Tests
         public TracingSmokeTests()
         {
             this.bootstrapper = new ConfigurableBootstrapper(
-                    configuration => configuration.Modules(new Type[] { typeof(RazorWithTracingTestModule) }));
+                    configuration =>
+                    {
+                        configuration.ViewEngine<RazorViewEngine>();
+                        configuration.Modules(new Type[] { typeof(RazorWithTracingTestModule) });
+                    });
 
             this.browser = new Browser(bootstrapper);
         }

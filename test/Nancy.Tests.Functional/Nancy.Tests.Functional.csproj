@@ -26,4 +26,8 @@
     </PackageReference>
     <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.14.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Nancy.ViewEngines.Razor\Nancy.ViewEngines.Razor.csproj" />
+  </ItemGroup>
 </Project>

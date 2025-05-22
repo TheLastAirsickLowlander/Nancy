@@ -8,6 +8,7 @@ namespace Nancy.Tests.Functional.Tests
     using Nancy.Tests.Functional.Modules;
     using Nancy.Tests.xUnitExtensions;
     using Nancy.ViewEngines;
+    using Nancy.ViewEngines.Razor;
     using Xunit;
 
     public class PartialViewTests
@@ -19,7 +20,11 @@ namespace Nancy.Tests.Functional.Tests
         public PartialViewTests()
         {
             this.bootstrapper = new ConfigurableBootstrapper(
-                    configuration => configuration.Modules(typeof(RazorTestModule)));
+                    configuration =>
+                    {
+                        configuration.ViewEngine<RazorViewEngine>();
+                        configuration.Modules(typeof(RazorTestModule));
+                    });
 
             this.browser = new Browser(bootstrapper);
         }

@@ -5,6 +5,7 @@ namespace Nancy.Tests.Functional.Tests
     using Nancy.Bootstrapper;
     using Nancy.Testing;
     using Nancy.Tests.Functional.Modules;
+    using Nancy.ViewEngines.Razor;
     using Xunit;
 
     public class ViewBagTests
@@ -16,7 +17,11 @@ namespace Nancy.Tests.Functional.Tests
         public ViewBagTests()
         {
             this.bootstrapper = new ConfigurableBootstrapper(
-                    configuration => configuration.Modules(typeof(RazorTestModule)));
+                    configuration =>
+                    {
+                        configuration.ViewEngine<RazorViewEngine>();
+                        configuration.Modules(typeof(RazorTestModule));
+                    });
 
             this.browser = new Browser(bootstrapper);
         }
