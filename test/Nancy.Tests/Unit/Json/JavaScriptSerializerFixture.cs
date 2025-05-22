@@ -107,8 +107,7 @@
 
             try
             {
-                serializer.Deserialize<TestConverterType>("12345");
-                throw new ThrowsException(typeof(InvalidCastException));
+                Assert.Throws<InvalidCastException>(() => serializer.Deserialize<TestConverterType>("12345"));
             }
             catch { }
         }

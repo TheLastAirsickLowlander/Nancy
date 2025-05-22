@@ -6,11 +6,9 @@
     using System.Globalization;
     using System.Linq.Expressions;
     using System.Reflection;
-
-    using Microsoft.CSharp.RuntimeBinder;
     using Extensions;
-
-    using Binder = Microsoft.CSharp.RuntimeBinder.Binder;
+    using Microsoft.CSharp.RuntimeBinder;
+    using Binder=Microsoft.CSharp.RuntimeBinder.Binder;
 
     /// <summary>
     /// A value that is stored inside a <see cref="DynamicDictionary"/> instance.
